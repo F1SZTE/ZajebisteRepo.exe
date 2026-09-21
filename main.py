@@ -20,3 +20,13 @@ cur.execute("""CREATE TABLE IF NOT EXISTS transactions
             FORGERY KEY (userfrim_id) REFERENCES users
             )
             """)
+
+cur.execute("""CREATE TABLE IF NOT EXISTS credentials
+               (
+                   id       INTEGER PRIMARY KEY AUTOINCREMENT,
+                   login    VARCHAR(50)  NOT NULL,
+                   password VARCHAR(150) NOT NULL,
+                   user_id  INTEGER      NOT NULL,
+                   FOREIGN KEY (user_id) REFERENCES users (id)
+               )
+            """)
